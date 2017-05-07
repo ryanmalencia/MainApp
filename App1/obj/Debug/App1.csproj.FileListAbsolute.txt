@@ -99,5 +99,9 @@ C:\Users\ryanm\Documents\GitHub\App1\App1\obj\Debug\android\assets\System.Data.d
 C:\Users\ryanm\Documents\GitHub\App1\App1\obj\Debug\android\assets\System.Numerics.dll.mdb
 C:\Users\ryanm\Documents\GitHub\App1\App1\obj\Debug\android\assets\System.Transactions.dll.mdb
 C:\Users\ryanm\Documents\GitHub\App1\App1\obj\Debug\android\assets\WebAPIClient.dll.mdb
+C:\Users\ryanm\Documents\GitHub\App1\App1\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\ryanm\Documents\GitHub\App1\App1\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\ryanm\Documents\GitHub\App1\App1\bin\Debug\System.Runtime.Serialization.Primitives.dll.mdb
+C:\Users\ryanm\Documents\GitHub\App1\App1\obj\Debug\android\assets\System.Runtime.Serialization.Primitives.dll.mdb
 C:\Users\ryanm\Documents\GitHub\App1\App1\obj\Debug\App1.dll.mdb
 C:\Users\ryanm\Documents\GitHub\App1\App1\bin\Debug\App1.dll.mdb

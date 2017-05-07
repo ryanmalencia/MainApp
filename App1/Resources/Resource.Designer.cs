@@ -61,10 +61,7 @@ namespace App1
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int CallButton = 2131034112;
-			
-			// aapt resource value: 0x7f050001
-			public const int MachineLayout = 2131034113;
+			public const int MachineLayout = 2131034112;
 			
 			static Id()
 			{

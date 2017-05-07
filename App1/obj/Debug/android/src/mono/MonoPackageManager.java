@@ -100,8 +100,9 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "App1.dll" comes first in this list. */
 		"App1.dll",
 		"DataTypes.dll",
-		"WebAPIClient.dll",
+		"Microsoft.AspNet.SignalR.Client.dll",
 		"Newtonsoft.Json.dll",
+		"WebAPIClient.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};
