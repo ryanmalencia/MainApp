@@ -73,6 +73,7 @@ namespace App1
                         TextView view = new TextView(ApplicationContext);
                         view.SetText(str, null);
                         view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
+                        view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
                         view.SetTextColor(Color.Green);
                         RunOnUiThread(() => agents.AddView(view,i));
                         break;
@@ -95,6 +96,7 @@ namespace App1
                         TextView view = new TextView(ApplicationContext);
                         view.SetText(str, null);
                         view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
+                        view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
                         view.SetTextColor(Color.White);
                         RunOnUiThread(() => agents.AddView(view,i));
                         break;
@@ -118,6 +120,7 @@ namespace App1
                         view.SetText(str, null);
                         view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
                         view.SetTextColor(Color.Red);
+                        view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
                         RunOnUiThread(() => agents.AddView(view,i));
                         break;
                     }
@@ -135,6 +138,8 @@ namespace App1
                 TextView view = new TextView(ApplicationContext);
                 view.SetText(agent.Name, null);
                 view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
+                view.SetTextColor(Color.White);
+                view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
                 agents.AddView(view);
             }
             AllAgents = data;
