@@ -1,0 +1,9 @@
+*.suo
+*.exe
+*.dll
+*.pdb
+**/bin
+**/obj
+**/bin/Release/
+**/obj/Release/
+packages
