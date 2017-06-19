@@ -31,7 +31,7 @@ namespace App1
         private void StartDataHub()
         {
             IHubProxy _hub;
-            string url = @"http://10.0.0.205:44444/";
+            string url = @"http://10.0.0.205/";
             var connection = new HubConnection(url);
             _hub = connection.CreateHubProxy("InformationHub");
             connection.Start();
@@ -69,13 +69,7 @@ namespace App1
                 {
                     if(str == AllAgents.Agents[i].Name)
                     {
-                        RunOnUiThread(() => agents.RemoveViewAt(i));
-                        TextView view = new TextView(ApplicationContext);
-                        view.SetText(str, null);
-                        view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
-                        view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
-                        view.SetTextColor(Color.Green);
-                        RunOnUiThread(() => agents.AddView(view,i));
+                        RunOnUiThread(() => ((TextView)agents.GetChildAt(i)).SetTextColor(Color.Green));
                         break;
                     }
                 }
@@ -92,13 +86,7 @@ namespace App1
                 {
                     if (str == AllAgents.Agents[i].Name)
                     {
-                        RunOnUiThread(() => agents.RemoveViewAt(i));
-                        TextView view = new TextView(ApplicationContext);
-                        view.SetText(str, null);
-                        view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
-                        view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
-                        view.SetTextColor(Color.White);
-                        RunOnUiThread(() => agents.AddView(view,i));
+                        RunOnUiThread(() => ((TextView)agents.GetChildAt(i)).SetTextColor(Color.White));
                         break;
                     }
                 }
@@ -115,13 +103,7 @@ namespace App1
                 {
                     if (str == AllAgents.Agents[i].Name)
                     {
-                        RunOnUiThread(() => agents.RemoveViewAt(i));
-                        TextView view = new TextView(ApplicationContext);
-                        view.SetText(str, null);
-                        view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
-                        view.SetTextColor(Color.Red);
-                        view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
-                        RunOnUiThread(() => agents.AddView(view,i));
+                        RunOnUiThread(() => ((TextView)agents.GetChildAt(i)).SetTextColor(Color.Red));
                         break;
                     }
                 }
@@ -138,7 +120,18 @@ namespace App1
                 TextView view = new TextView(ApplicationContext);
                 view.SetText(agent.Name, null);
                 view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
-                view.SetTextColor(Color.White);
+                if(agent.IsDead())
+                {
+                    view.SetTextColor(Color.Red);
+                }
+                else if(agent.IsIdle())
+                {
+                    view.SetTextColor(Color.White);
+                }
+                else
+                {
+                    view.SetTextColor(Color.Green);
+                }
                 view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
                 agents.AddView(view);
             }
