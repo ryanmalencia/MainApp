@@ -13,11 +13,14 @@ namespace App1
     public class MainActivity : Activity
     {
         AgentCollection AllAgents;
+        LinearLayout agents;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
+
+            agents = FindViewById<LinearLayout>(Resource.Id.MachineLayout);
             //async get initial data
             GetData();
             //start signalr connection
@@ -31,7 +34,7 @@ namespace App1
         private void StartDataHub()
         {
             IHubProxy _hub;
-            string url = @"http://10.0.0.205/";
+            string url = @"http://74.109.196.114/";
             var connection = new HubConnection(url);
             _hub = connection.CreateHubProxy("InformationHub");
             connection.Start();
@@ -43,7 +46,6 @@ namespace App1
 
         private void AddAgent(string agent)
         {
-            LinearLayout agents = FindViewById<LinearLayout>(Resource.Id.MachineLayout);
             if (AllAgents == null)
             {
                 AllAgents = new AgentCollection();
@@ -56,12 +58,15 @@ namespace App1
             TextView view = new TextView(ApplicationContext);
             view.SetText(agent, null);
             view.Gravity = Android.Views.GravityFlags.CenterHorizontal;
+            view.Click += (sender, e) =>
+            {
+                StartActivity(typeof(AgentStatus));
+            };
             RunOnUiThread(() => agents.AddView(view));
         }
 
         private void SetRunning(string str)
         {
-            LinearLayout agents = FindViewById<LinearLayout>(Resource.Id.MachineLayout);
             if (AllAgents != null)
             {
                 int i;
@@ -78,7 +83,6 @@ namespace App1
 
         private void SetIdle(string str)
         {
-            LinearLayout agents = FindViewById<LinearLayout>(Resource.Id.MachineLayout);
             if (AllAgents != null)
             {
                 int i;
@@ -95,7 +99,6 @@ namespace App1
 
         private void SetDead(string str)
         {
-            LinearLayout agents = FindViewById<LinearLayout>(Resource.Id.MachineLayout);
             if (AllAgents != null)
             {
                 int i;
@@ -113,7 +116,6 @@ namespace App1
         async void GetData()
         {
             AgentCollection data = await Task.Run(() => GetMachData());
-            LinearLayout agents = FindViewById<LinearLayout>(Resource.Id.MachineLayout);
             agents.RemoveAllViews();
             foreach (Agent agent in data.Agents)
             {
@@ -133,6 +135,9 @@ namespace App1
                     view.SetTextColor(Color.Green);
                 }
                 view.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
+                view.Click += delegate { 
+                    StartActivity(typeof(AgentStatus));
+                };
                 agents.AddView(view);
             }
             AllAgents = data;
